@@ -73,15 +73,6 @@ Ran 3 tests in 0.000s
 OK
 ```
 
-## Overview
-We are testing two main functionalities:
-
-#### Car Movement (moveCar):
-Simulates a car moving within a grid based on initial position, direction, and movement instructions.
-
-#### Collision Detection (moveCarCollisions):
-Detects collisions between multiple cars on the grid based on their individual movements and positions.
-
 ## Test Suites
 1. Car Movement Tests (TestMoveCar)
 This test suite ensures that the moveCar function behaves correctly in different scenarios. The function simulates the movement of a car based on grid boundaries, start position, initial direction, and instructions.
