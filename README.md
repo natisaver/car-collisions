@@ -126,6 +126,7 @@ Cars:
 Expected collisions:
 Cars involved: ['A', 'C'], collision at (1, 2), step 0
 Cars involved: ['B', 'D'], collision at (7, 8), step 0
+
 Test 3: No Collisions, Cars Avoid Each Other
 Two cars move straight in opposite directions without colliding.
 
