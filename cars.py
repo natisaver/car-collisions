@@ -37,7 +37,6 @@ def moveCar(grid_size, start_pos, start_dir, instructions):
 import collections 
 
 def checkCollisions(positions):
-    print(positions)
     collisions = {}
     visited = collections.defaultdict(list)
     
@@ -90,6 +89,8 @@ def partTwo(cars):
                 print(v)
             print(step+1)
             break
+    # if no collisions
+    print("no collisions")
 
 
 # test part 2
