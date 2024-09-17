@@ -1,10 +1,35 @@
 # car-collisions
 
-## Features
+## Design Overview
 
-- Simulates car movement on a grid.
-- Supports turning left (L), turning right (R), and moving forward (F).
-- Handles grid boundaries to prevent the car from moving out of bounds.
+The application consists of two main functionalities:
+1. **Car Movement (`moveCar`)**:
+   - Simulates the movement of a single car on a grid, taking into account its starting position, initial direction, and a series of movement instructions.
+   - Instructions include forward movement (`F`) and rotations (`L` for left, `R` for right).
+   - The car will not move if it reaches the edge of the grid (boundary detection).
+
+2. **Collision Detection (`moveCarCollisions`)**:
+   - Tracks the positions of multiple cars as they move simultaneously based on their respective instructions.
+   - After each step, it checks if two or more cars occupy the same grid position, which signifies a collision.
+   - If a collision occurs, all cars involved, the collision position, and the step at which it occurred are recorded.
+
+### Assumptions
+- Each car is initialized with a unique name, starting position, direction, and a sequence of movement instructions.
+- Multiple cars may have the same starting position, which can result in immediate collisions.
+- There can be multiple collisions happening at different locations by different groups of cars at the same step.
+- Cars move one step at a time in the grid, following their instructions until they either complete their instructions or hit the grid boundary.
+- If a car moves out of bounds, it will not move.
+- Cars may rotate left or right without changing their position.
+
+  
+### Code Structure
+1. **`moveCar`**: A function that simulates a car's movement based on the provided instructions.
+2. **`moveCarCollisions`**: A function that simulates the movement of multiple cars and detects collisions during the movement process.
+3. **Test Suites**:
+   - **`TestMoveCar`**: Unit tests to ensure that individual car movements are handled correctly.
+   - **`TestCollisions`**: Unit tests to verify the detection of collisions between multiple cars.
+
+---
 
 ## Getting Started
 
