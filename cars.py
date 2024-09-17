@@ -2,6 +2,7 @@ import unittest
 import collections
 
 # part 1
+# Directions Transformers
 DIRECTIONS = {"N": 0, "E": 1, "S": 2, "W": 3}
 REVERSE_DIRECTIONS = {0: "N", 1: "E", 2: "S", 3: "W"}
 MOVES = {
@@ -11,14 +12,16 @@ MOVES = {
     3: (-1, 0)  # Move left (decrease x)
 }
 
-# Rotate Car
+# Returns Number representing direction
 def rotate(direction, turn):
+    # turn left
     if turn == 'L':
         if direction == 0:
             direction = 3
         else:
             direction = direction - 1  # Turn left
         return direction
+    # turn right
     elif turn == 'R':
         return (direction+1) % 4
     # no turn
@@ -27,18 +30,22 @@ def rotate(direction, turn):
 # Move Car
 # Main Functionality
 def moveCar(grid_size, start_pos, start_dir, instructions):
+    # extract starting position
     x, y = start_pos
+    # convert direction to number format
     direction = DIRECTIONS[start_dir]
-    
+
+    # parse instructions
     for instruction in instructions:
+        # rotate
         if instruction == "L" or instruction == "R":
             direction = rotate(direction, instruction)
+        # move forward
         elif instruction == 'F':
-            # Move forward based on the current direction
             i, j = MOVES[direction]
             newX = x + i
             newY = y + j
-            # Update only if within bounds of the grid
+            # if out of bounds ignore command
             if newX in range(grid_size[0]) and newY in range(grid_size[1]):
                 x,y = newX, newY
 
