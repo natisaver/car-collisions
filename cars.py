@@ -78,7 +78,7 @@ def moveCarCollisions(cars, grid_size):
         # highest instruction length
         maxSteps = max(maxSteps, len(car[2]))
     
-    # check if they collide at the start, step 0
+    # check if cars collide at starting positions
     isCollided, collisions = checkCollisions(positions)
     if isCollided:
         for pos, car_ids in collisions.items():
@@ -89,15 +89,14 @@ def moveCarCollisions(cars, grid_size):
             })
         return collision_events
 
-    # move all cars and check for collisions
+    # start moving cars step-by-step, checking for collisions
     for step in range(maxSteps):
-        # move each car
         for car_id, car in cars.items():
-            # check if there are any more instructions for this car_id
+            # check if there are instructions for car_id to execute at step
             if step < len(car[2]):
-                # apply instruction, reuse part 1
+                # if valid, apply instruction, reuse code logic in part 1
                 positions[car_id], directions[car_id] = moveCar(grid_size, positions[car_id], directions[car_id], car[2][step])
-        # print if any collisions
+        # if collisions, return
         isCollided, collisions = checkCollisions(positions)
         if isCollided:
             for pos, car_ids in collisions.items():
